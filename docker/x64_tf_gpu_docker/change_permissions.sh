@@ -1,0 +1,1 @@
+sudo chmod +x run.sh run_gpu.sh commit.sh commit_gpu.sh continue_gpu.sh internal/docker-entrypoint.sh build.sh

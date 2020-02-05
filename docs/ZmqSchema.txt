@@ -1,0 +1,38 @@
+[ Data Acquisition Module ]
+    Request:
+        {
+            "cmd":string            => "start"or"stop"or"terminate"or"getData"or"getStatus"
+            "xbee_device":bool      (with start,stop,terminate)
+            "spi_device":bool       (with start,stop,terminate)
+            "metaData":dictionary   (with start)
+            "Server":bool           (whether to terminate the zmq server with terminate command)
+            "pot_cmd":string        => "+","-","++","--","stop",retract","setValue"
+            "pot_val":integer       => 20 <-> 107 <-> 170
+            "buffer":bool           (with getData)
+            "slices":bool           (with getData)
+        }
+    Reply:
+        {
+            "error":int          (0 is error)(with all replies)
+            "status":dictionary  (with all replies)
+            "xbee_slice":list     (with getData)
+            "acc_slice":list     (with getData)
+            "xbee_buffer":list     (with getData)
+            "acc_buffer":list     (with getData)
+
+        }
+
+[ Material Detection Module ]
+    Request:
+        {
+            "cmd":string         => "getPrediction"or"terminate"or"getStatus"
+        }
+    Reply:
+        {
+            "error":int          (0 is error)(with all replies)
+            "status":dictionary  (with all replies)
+            "xbee_slice":list     (with getPrediction)
+            "acc_slice":list     (with getPrediction)
+            "prediction":dictionary (with getPrediction)
+            
+        }

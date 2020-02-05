@@ -1,0 +1,52 @@
+(1) First create id_rsa file to enable loggin to target without passwd
+
+ssh-keygen -t rsa                                                                      <============ GENERATE id_rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/JoakimWigström/.ssh/id_rsa):
+/c/Users/JoakimWigström/.ssh/id_rsa already exists.
+Overwrite (y/n)? y                                                                      <============ YES
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:                                                            <============ EMPTY PASSPHRASE
+Your identification has been saved in /c/Users/JoakimWigström/.ssh/id_rsa.
+...
+
+(2) Install id_rsa on target1 - LINUX DESKTOP
+
+ cat ~/.ssh/id_rsa.pub | ssh joakim@172.25.113.177 'cat >> ~/.ssh/authorized_keys'      
+
+on raspberry pi:
+cat ~/.ssh/id_rsa.pub | ssh pi@172.25.113.108 'cat >> ~/.ssh/authorized_keys'
+
+
+Installera git-bash
+Installera rsync
+
+https://alanbarber.com/post/installing-rsync-on-windows/
+ 
+
+ Directory of C:\Program\git\bin
+
+2019-08-20  11:23    <DIR>          .
+2019-08-20  11:23    <DIR>          ..
+2019-06-08  06:14            44 064 bash.exe
+2019-06-08  06:14            43 544 git.exe
+2016-07-13  19:47           821 248 msys-1.0.dll
+2011-10-29  20:18         1 019 904 msys-iconv-2.dll
+2011-10-29  13:22            48 128 msys-intl-8.dll
+2010-04-28  01:40         1 384 327 msys-popt-0.dll
+2011-08-24  07:11           359 424 rsync.exe
+2019-06-08  06:14            44 064 sh.exe
+               8 File(s)      3 764 703 bytes
+               2 Dir(s)  365 986 803 712 bytes free
+
+Lägg till i path:
+
+C:\Program\git\bin
+
+RSYNC funkar inte :(
+
+
+Install java on raspberry pi:
+
+
+

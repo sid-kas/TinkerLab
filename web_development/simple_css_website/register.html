@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register page</title>
+</head>
+<body style="background-color:#ffcccc; margin:20px; width: 65%;">
+    <nav>
+        
+        <a href="index.html"> Home </a> <br>
+        Already a memeber? <a href="login.html">Login</a> <br>
+        Checkout the <strong>blog</strong> <a href="media.html">here!</a>
+        <hr>
+    </nav>
+
+    <Form method="GET">
+        First Name: <input type="text" name="firstname" placeholder="Enter your name here"><br>
+        Last Name : <input type="text" name="lastname" placeholder="Enter your surname here"> <br>
+        User Name : <input type="text" name="username" required placeholder="Pick an username"> <br>
+        Password : <input type="password" name="password" required placeholder="Type in pasword here"> <br>
+        Email: <input type="email" name="emial" required placeholder="id@domain.com" id=""> <br>
+        <!-- re-type and verify password? -->
+        Date of Birth : <input type="date" name="dateofbirth" id="dob"> <br>
+        Age : <input type="number" name="age" min="10" max="50" id=""> <br>
+        Give rating: <input type="range" name="rating" id=""> <br>
+        Gender : <br>
+        <input type="radio" name="gender" value="Male" > Male <br>
+        <input type="radio" name="gender" value="Female"> Female <br>
+        <input type="radio" name="gender" value="Other"> Other <br>
+
+        Any pets? <br>
+        <input type="checkbox" name="pets" value="dog" id=""> Dog <br>
+        <input type="checkbox" name="pets" value="cat" id=""> Cat <br>
+        <input type="checkbox" name="pets" value="other" id=""> Other <br>
+
+        Select a car : 
+        <select name="cars" id="">
+            <option value="volvo">Volvo</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="other">Other</option>
+        </select> <br>
+
+        Select a file:
+        <input type="file" name="personalid" id=""> <br>
+
+
+        About you (optional): <br>
+        <textarea name="aboutyou" id="" cols="40" rows="5"></textarea> <br>
+
+        <input type="submit" value="Register" >
+        <input type="reset">
+
+
+    </Form>
+</body>
+</html>

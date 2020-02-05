@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Landing Page</title>
+</head>
+<body>
+
+    <nav>
+        
+        <ul>
+            <li><a href="index.html"> Home </a> <br></li>
+            <li><a href="login.html">Login</a> <br></li>
+            <li>Not a member? <a href="register.html"> Register here</a> <br></li>
+            <li>Checkout the <strong>blog</strong> <a href="media.html">here!</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <div class="container">
+        <h1 id="heading_cheat_sheet"> HTML Cheat Sheet </h1> <br>
+    
+    <span>Basic text <br></span>
+    <div class="sample-content">
+        
+        <h1>This is h1!</h1><br>
+        <h2>This is h2!</h2><br>
+        <h3>This is h3!</h3><br>
+        <h4>This is h4!</h4><br>
+        <h5>This is h5</h5><br>
+        <h6>This is h6</h6><br>
+    
+        <strong>Bold Text here</strong><br>
+        <em>Italic text</em><br>
+    
+        <a href="#"> Page Self link</a><br>
+    
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+            Ea illo id maxime cum enim quam autem explicabo incidunt, <br>
+            at ullam doloremque deserunt nihil officiis animi suscipit <br>
+            excepturi. Natus, aliquid ad.
+        </p><br>
+    
+        <strong>This is unordered list</strong>
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>ordered sublist</li>
+            <ol>
+                <li>item1</li>
+                <li>item2</li>
+            </ol>
+            <li>item4</li>
+    
+        </ul> <br>
+    
+        <Strong>Sample table: </Strong>
+        <table>
+            <thead>
+                <tr>
+                    <th> name </th>
+                    <th> email </th>
+                    <th> age </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> j d</td>
+                    <td> j.d@domain.com</td>
+                    <td> 33 </td>
+                </tr>
+                <tr>
+                    <td>John Doe</td>
+                    <td>jdoe@something.com</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>Sara Williams</td>
+                    <td>sara@something.com</td>
+                    <td>25</td>
+                </tr>
+            </tbody>
+        </table><br>
+    
+        <Strong>Quote</Strong>
+        <blockquote cite="google.com">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Impedit nulla eligendi sit exercitationem et. 
+            Cum soluta perferendis dicta aliquid tenetur ipsam dolore fugiat natus. 
+            Distinctio tempora culpa id non cumque?  
+        </blockquote>
+    </div>
+
+    
+
+    <div >
+        <span> Login Form <br></span>
+
+        <Form class="sample-content">
+            User Name : <input type="text" name="username" required placeholder="Enter username"> <br>
+            Password : <input type="password" name="password" required placeholder="Enter pasword"> <br>
+            <input type="submit" value="Login"> <br>
+            <span title="login button as symbol/image "> <input type="image" src="images/log-in.svg" style="margin-top:10px;" width="20px" value="Login" alt="Submit"> </span> <br>
+            Not a memeber? Register <a href="register.html"> here </a>
+        </Form>
+    </div>
+
+
+    <div>
+        <span> Registration Form <br> </span> 
+
+        <Form method="GET" class="sample-content">
+            First Name: <input type="text" name="firstname" placeholder="Enter your name here"><br>
+            Last Name : <input type="text" name="lastname" placeholder="Enter your surname here"> <br>
+            User Name : <input type="text" name="username" required placeholder="Pick an username"> <br>
+            Password : <input type="password" name="password" required placeholder="Type in pasword here"> <br>
+            Email: <input type="email" name="emial" required placeholder="id@domain.com" id=""> <br>
+            <!-- re-type and verify password? -->
+            Date of Birth : <input type="date" name="dateofbirth" id="dob"> <br>
+            Age : <input type="number" name="age" min="10" max="50" id=""> <br>
+            Give rating: <input type="range" name="rating" id=""> <br>
+            Gender : <br>
+            <input type="radio" name="gender" value="Male" > Male <br>
+            <input type="radio" name="gender" value="Female"> Female <br>
+            <input type="radio" name="gender" value="Other"> Other <br>
+    
+            Any pets? <br>
+            <input type="checkbox" name="pets" value="dog" id=""> Dog <br>
+            <input type="checkbox" name="pets" value="cat" id=""> Cat <br>
+            <input type="checkbox" name="pets" value="other" id=""> Other <br>
+    
+            Select a car : 
+            <select name="cars" id="">
+                <option value="volvo">Volvo</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="other">Other</option>
+            </select> <br>
+    
+            Select a file:
+            <input type="file" name="personalid" id=""> <br>
+    
+    
+            About you (optional): <br>
+            <textarea name="aboutyou" id="" cols="40" rows="5"></textarea> <br>
+    
+            <input type="submit" value="Register" >
+            <input type="reset">
+    
+    
+        </Form>
+    </div>
+
+    <span> Media </span>
+
+    <div class="sample-content">
+        
+        <!-- images -->
+        <Strong> Local image: </Strong> <br>
+        <img src="images/sample.jpg" alt="sample local image" width="20%"> <br>
+
+        <Strong>Image from web: </Strong> <br>
+        <img src="https://james-mcintyre.co.uk/wp-content/uploads/2018/08/Raspberry_Glen-Lyon.jpg" alt="web image" width="20%"> <br>
+
+        <!-- Downloadable links -->
+        <Strong>Downladable links:</Strong> <br>
+        download file <a href="docs/2019_V14.docx" target="_blank" download>  here</a> <br>
+
+
+        <!-- pdf reader -->
+        <strong>PDF readers:</strong> <br>
+        Read pdf in <a href="docs/ashtavakra_gita__sanskrit_with_english.pdf" target="_blank"> new tab </a> <br>
+        Read pdf in <a href="docs/ashtavakra_gita__sanskrit_with_english.pdf" target="_self"> current tab </a> <br>
+
+        <!-- Audio -->
+        <strong>Audio player: </strong> <br>
+        <audio controls > 
+            <source src="media/Behave_unregistered.mp3" type="audio/mpeg">
+        </audio> <br>
+
+        <!-- Video -->
+        <Strong>Video player: </Strong> <br>
+        <video src="media/vid_turtle.mov" width="40%" controls></video>
+    
+    </div>
+
+
+
+    <div style="margin-top: 500px;"></div>
+
+    </div>
+</body>
+</html>

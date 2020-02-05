@@ -1,0 +1,86 @@
+
+
+>>> COMMANDS
+###################################################################################################
+Here we list all the commands available.
+The command is shown to the left and the response from the ad10 to the right.
+Examples of all commands are listed.
+Comments and explanations are within parentheses.
+
+RPi                     AD10
+(version command)
+getversion          =>  
+                        (AD10 sends back: Message type 1, Protocol version 1, commit or build identifier)
+                    <=  1,1,'Commit id or something else'
+
+(set switch, activating/deactivating the power to drill, parameter is 1=on or 0=off)
+setswitch,1     =>
+                    <=   1,A (Acknowledge)
+
+(set pid parameters, three? parameters (decimal values) A,B,C are specified)
+setpid,0.1,0.3,0.9  =>
+                    <=   1,A (Acknowledge)
+
+(set current, parameter is a decimal value)
+setcurrent,0.1  =>
+                    <=   1,A (Acknowledge)
+
+(set data rate, parameter is between 1-1000/s?, a value of 0 means that the stream stops, any other value means that it starts)
+setstreamrate,1     =>
+                    <=   1,A (Acknowledge)
+
+(turn on/of feeder, parameter is 1=on or 0=off)
+setfeeder,1         =>
+                    <=   1,A (Acknowledge)
+
+
+>>> Asyncronous data stream
+###################################################################################################
+RPi                     AD10
+
+                        (data stream message of ad10-state, this stream initiated by setstreamrate,x command)
+                        (The format is Message_type_2, PAYLOAD)
+                        (The PAYLOAD contains 16 bit hexdecimal comma-separates values: feeder_current_set, feeder_current_actual, feeder_rpm, feeder_pwm, drill_current)
+                    <=   2,1F00,0001,ABC0,0100... 
+(No response from RPi)
+
+
+>>> Detiled descriptions of the data format.
+#####################################################################################################
+
+Basic data format for command from RPi to AD10
+
+- Here the format of the message sent from the RPi is described.
+- The message is in ascii frommat. 
+
+- The format is this: PAYLOAD<CR>
+
+    <PAYLOAD>      = Payload containing command string, could be anything
+    <CR>           = Carriage returnm, ends the message 
+
+
+Basic data format in driection from AD10 to RPi
+
+- Here the format of the message sent from the RPi is described.
+- The message is in ascii frommat. 
+
+- The format is this: <MESSAGE_TYPE><COMMA><PAYLOAD><CR>
+
+    <MESSAGE_TYPE> = One character which specify the content ypr in payload
+    <COMMA>        = Just a comma character, a separator
+    <PAYLOAD>      = Payload containing message string, could be anything
+    <CR>           = Carriage returnm, ends the message 
+
+    Message types:
+        '1' = Ack/Nack/Response message as response for received command 
+        '2' = Data packet (streamed from ad10)
+
+        Ack/Nack message:
+        The AD10 sends ack/nack in response to commands from RPi.
+        Examples:
+        1,A     =   Ack (Its ok)
+        1,N     =   Nack (NOT ok!)
+        1,Stuff =   Other stuff in payload (i.e. response for getversion)
+
+
+

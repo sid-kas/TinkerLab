@@ -1,0 +1,61 @@
+@startuml MachineBackgroundColor
+' todo: add connections between tables
+object FileSystemInfo {
+    + filesystem_id : Integer/UUID - PK
+    + abosulute_path : String
+    + free_memory : Long 
+       //info: in bytes//
+    + ipaddress/domain_name : String
+    + path_to_private_key : String
+    + nUsages : Integer
+} 
+
+object FileInfo {
+    + file_id : Integer/UUID - PK
+    + relative_path : String
+    + created_on : TimeStamp
+    + last_usage : TimeStamp
+    + last_update : TimeStamp
+    + size_in_bytes : Long
+    + nUsages : Integer
+}
+
+object FileToFileSystem {
+    + filesystem_id : Integer/UUID - FK
+    + file_id : Integer/UUID - FK
+    + file_instance_id : Integer/UUID -PK
+    //info: Contsraint (filesystem_id, file_id)//
+    + nUsages : Integer
+}
+
+object FileUsageMetrics {
+    + metric_id : TimeStamp - PK
+    + file_instance_id : Integer/UUID - FK
+    + user_id : Integer/UUID - FK
+}   
+
+object UserInfo {
+    + user_id :  Integer/UUID - PK
+    + name: String
+    + email : String
+    + access_token : String 
+    ' Think about the access token and credentials...
+}
+
+object TrainedModelInfo {
+    + model_id : Integer/UUID - PK
+    + model_name : String
+    + model_file_id : Integer/UUID - FK
+    //info: refers FileInfo(file_id)//
+    + training_accuracy : Double 
+    + test_accuracy : Double
+}
+
+object SensorDataInfo {
+    + sensor_data_id : Integer/UUID - PK
+    + file_id : Integer/UUID - FK
+    + nDataPoints : Integer
+    + equipment_type : enum
+}
+
+@enduml

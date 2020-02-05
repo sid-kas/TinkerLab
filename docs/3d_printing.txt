@@ -1,0 +1,26 @@
+[creality ender 3 - 3d printer web page]
+- https://creality.com/creality-ender-3-pro-3d-printer-p00251p1.html
+
+[web interface to control and add files to the printer]
+- https://github.com/foosel/OctoPrint
+
+[3d cad design software]
+- https://www.rs-online.com/designspark/mechanical-software
+
+[3d printing model slicer]
+- https://ultimaker.com/software/ultimaker-cura
+
+
+[Tutorials]
+- https://howchoo.com/g/ntg5yzg1odk/using-octoprint-with-the-creality-ender-3-3d-printer#print-the-ender-3-octoprint-parts
+- https://howchoo.com/g/y2rhnzm3odz/control-your-3d-printer-with-octoprint-and-raspberry-pi
+
+[Firmware update]
+- https://howchoo.com/g/mge1mdfkzjv/ender-3-bootloader-firmware-update-marlin
+
+[raspberry pi case]
+- https://www.thingiverse.com/thing:2889371/files
+
+[open source cad files]
+- https://grabcad.com/
+- https://www.thingiverse.com/

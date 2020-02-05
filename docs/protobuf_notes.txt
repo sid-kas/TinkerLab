@@ -1,0 +1,2 @@
+cd protobuf
+protoc --java_out=../java/src Schema.proto

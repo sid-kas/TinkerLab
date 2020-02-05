@@ -1,0 +1,73 @@
+body {
+    background-color: rgb(116, 116, 116);
+    color: #fff ;
+    text-align: justify;
+    padding: 10px;
+    margin:10px;
+}
+
+a{
+    color: gainsboro; 
+    text-decoration: none;
+    font-style: oblique;
+    padding: none;
+}
+
+a:hover{
+    color: crimson ;
+    border-bottom: gainsboro;
+}
+
+nav ul {
+    padding: none;
+    font-size: large;
+    display: flex;
+    text-align: right;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 10px 20px;
+    padding: 5px;
+}
+
+nav ul li:hover {
+    border-bottom: 5px solid rgb(196, 195, 195);
+}
+
+
+#heading_cheat_sheet {
+    text-align: center;
+}
+
+#login_form {
+    display: inline-block;
+    padding-left: 0%;
+    width: 50%;
+}
+span {
+    border-bottom: 3px solid rgb(180, 180, 180) ;
+    font-weight: bolder;
+    font-size: x-large;
+    margin-bottom: 10%;
+}
+
+.sample-content {
+    display: inline-block;
+    padding: 2% 12%;
+}
+
+div a,img,strong,audio,video {
+    margin-bottom: 40px;
+}
+
+input {
+    display: inline-block;
+    align-items: center;
+    margin: 10px 20px;
+}
+
+.container {
+    display: inline-block;
+    margin: 0% 15%;
+}

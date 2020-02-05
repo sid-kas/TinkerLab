@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  vscode_server:
+    build: .
+    restart: always
+    container_name: remote_vscode_server
+    ports:
+      - 8443:8080
+    environment: 
+      PASSWORD: sidkas
+    volumes:
+      # - /home/sidkas:/home/coder/project:rw
+      - /c/Users/Siddhartha/Desktop:/home/coder/project:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    

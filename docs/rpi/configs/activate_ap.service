@@ -1,0 +1,11 @@
+[Unit]
+Description=Switch to acces point if wlan not available
+After=network.target
+
+[Service]
+User=root
+ExecStart=/bin/bash -c 'if ! $(iwgetid); then echo "Switching to access point mode"; /bin/bash /raspiApWlanScripts/switchToAP.sh; fi'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

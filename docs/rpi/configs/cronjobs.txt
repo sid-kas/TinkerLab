@@ -1,0 +1,2 @@
+00 03 * * * sudo apt-get update -yq && sudo apt-get upgrade -yq && sudo reboot now
+00 09 * * 1-5 echo hello

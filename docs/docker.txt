@@ -1,0 +1,15 @@
+curl -sSL https://get.docker.com | sh
+sudo apt install -y docker-compose
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo usermod -aG docker pi
+
+sudo systemctl restart docker
+sudo docker rm $(sudo docker ps -a -f status=exited -q)
+sudo docker rmi $(sudo docker images -a -q)
+
+sudo apt update
+sudo apt full-upgrade
+sudo apt install dnsmasq
+sudo apt --purge remove dnsmasq
+sudo apt autoremove

@@ -1,0 +1,105 @@
+@startuml main
+title Server on RaspberryPi
+package "logging FrameWork" <<cloud>> {
+    
+    object logging << (F,#FF7700) >> {
+        + print
+        + Write to file
+        + Publish on a tcp port
+    }
+}
+
+package Serilization&Communication <<frame>> {
+    logging <...o BaseMsgHandler
+    class MsgProtocol {
+        role: serialize/deserialize
+    }
+    class ZmqService {
+        role: send/receive messages via tcp port
+    }
+    class BaseMsgHandler {
+        role: handle method calls
+    }
+    BaseMsgHandler -> ZmqService
+    ZmqService -> MsgProtocol
+}
+
+
+
+package WebBasedGraphTools <<cloud>> {
+    class SQLiteGraphViz
+    SQLiteGraphViz o..> SQLiteDataBase : read
+}
+
+package DataAcquisitionService <<card>> {
+    
+    class DataAcquisitionServer extends BaseMsgHandler {
+
+    }
+    
+    DataAcquisitionServer --> XbeeHandler
+    DataAcquisitionServer --> SpiHandler
+    class XbeeHandler
+    class SpiHandler
+
+    package PiHat <<frame>> {
+        
+        object PiHat
+        object TimeOfFlightSensor
+        object 3AxisAccelerometer
+        SpiHandler ..> PiHat : SPI
+        PiHat ..> TimeOfFlightSensor : I2C
+        PiHat ..> 3AxisAccelerometer : SPI
+    }
+
+    package XbeeCommunication <<storage>> {
+        XbeeHandler --> xbee_wrapper
+        class xbee_wrapper
+        object AD10Hardware
+        xbee_wrapper .> AD10Hardware : read&write
+    }
+
+    package databasehandler <<frame>> {
+        DataAcquisitionServer --> SQLiteSaver
+        class SQLiteSaver
+        class SQLiteDB
+        SQLiteSaver --> SQLiteDB
+        SQLiteDB ...> SQLiteDataBase : create/append
+    }    
+}
+
+package MaterialDetectionService <<Frame>> {
+    class MaterialDetectionApp extends BaseMsgHandler 
+    MaterialDetectionApp ..> TrainedModels : parse
+
+    package Train&Test <<Frame>> {
+        MaterialDetectionTrainer --|> Conv1dClassifierModel
+        MaterialDetectionTester --|> Conv1dClassifierModel
+        Conv1dClassifierModel -|> TensorFlowBase
+        MaterialDetectionTrainer -> DataSampler
+        MaterialDetectionTrainer ...> TrainedModels : generate
+        MaterialDetectionTester ...> TrainedModels : parse
+    }
+}
+
+
+package FileSystem <<folder>> {
+    package TrainedModels <<folder>> {
+        object modelname_timestamp 
+        object ModelConfigs
+    }
+
+    package SQLiteDataBase <<database>> {
+
+    }
+
+}
+
+package ControllerService <<Frame>> {
+     class BaseController extends BaseMsgHandler
+     class SimpleAutomaticDrill extends BaseController
+}
+
+
+
+@enduml

@@ -1,0 +1,11 @@
+version: "2"
+
+# command: ["python","-u","src/common/zmq_service.py","-rep"]
+services:
+  zmq_server:
+    build: .
+    command: ["ls -la"]
+    ports:
+      - "5556:5556"
+    volumes:
+      - /home/:/home/:rw

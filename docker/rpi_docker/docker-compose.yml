@@ -1,0 +1,12 @@
+version: "2.0"
+
+# command: ["python3","-u","src/common/zmq_service.py","-rep"]
+services:
+  rpi_server:
+    build: .
+    network_mode: host
+    command: ["python3","-u","src/common/zmq_service.py","-rep"]
+    ports:
+      - "5556:5556"
+    volumes:
+      - /home/:/home/:rw

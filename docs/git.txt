@@ -1,0 +1,50 @@
+[git push all changes]
+git add --all && git commit -m"{message}" && git push origin {branch_name}
+git add --all && git commit -m"default" && git push origin master
+
+[git config cache]
+git config --global credential.helper "cache --timeout 16000"
+
+[current head]
+git rev-parse --short HEAD
+
+[merge with master]
+git checkout master
+git pull origin master
+git merge {branch_name}
+git push origin master
+
+[new branch]
+git branch 
+git branch {branch_name}
+git checkout {branch_name}
+git add --all
+git commit -m "adding a change from the feature branch"
+git checkout master
+git push origin {branch_name}
+
+[cleanup]
+git clean -d -x -f
+git rm -r --cached .
+git add .
+git commit -am "git cache cleared"
+git push
+git reset HEAD^ --hard
+
+[delete branch]
+git push origin --delete {branch_name} // remote delete
+git branch -D {branch_name} // local delete
+
+[Change credentials]
+git config --get remote.origin.url
+git remote set-url origin https://CIT-sidkas@bitbucket.org/victornilssoncit/husqvarna-data-management.git
+git remote set-url origin https://victornilssoncit@bitbucket.org/victornilssoncit/husqvarna-data-management.git
+
+git remote set-url origin https://CIT-sidkas@bitbucket.org/citdigitalization/husqvarna-automatic-drilling.git
+git remote set-url origin https://victornilssoncit@bitbucket.org/citdigitalization/husqvarna-automatic-drilling.git
+
+[Add aliases to git]
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status

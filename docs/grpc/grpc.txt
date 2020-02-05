@@ -1,0 +1,15 @@
+check JAVA_HOME =>	env
+set v 1.8 =>		export JAVA_HOME='C:\Program Files\Java\jdk1.8.0_221\'
+
+Install maven (https://maven.apache.org/install.html)
+ Download /apache-maven-3.6.1-bin.tar.gz
+ tar xzvf apache-maven-3.6.1-bin.tar.gz
+ export PATH=$PATH:/c/work/git/maven/apache-maven-3.6.1/bin/
+ cd gRPC-Server-Impl/
+ Add lines to pom.xml
+                <configuration>
+                    ...
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+ mvn install 

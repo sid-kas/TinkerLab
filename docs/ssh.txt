@@ -1,0 +1,48 @@
+ssh -f -N -T -R 9687:localhost:22 pi@46.239.115.51 -p 8282(pi-white)
+ssh pi@localhost -p 9687
+ssh -f -N -T -L 2222:localhost:9687 pi@46.239.115.51 -p 8282
+ssh pi@localhost -p 2222
+
+ssh -f -N -T -R 8686:localhost:22 pi@46.239.115.51 -p 8282(work_bench)
+ssh sidkas@localhost -p 8686
+ssh -f -N -T -L 2222:localhost:8686 pi@46.239.115.51 -p 8282
+ssh sidkas@localhost -p 2222
+
+ssh pi@172.25.113.69 (hus-hat) 
+ssh sidkas@172.25.113.177 (workbench)
+ssh pi@c-552f524e.022-60-6762675.bbcust.telenor.se -p 8282
+ssh pi@172.25.113.178
+
+ssh -f -N -D 54321 localhost
+ssh -f -N -T -R 9687:localhost:54321 pi@46.239.115.51 -p 8282
+
+ssh -f -N -T -L 6006:sidkas-ubuntu:6006 sidkas@129.16.146.56
+
+ssh -f -N -T -L 5005:localhost:5005 system@172.25.113.177
+
+ssh-keygen -t rsa -b 4096 -C "{email or domain address}"
+ssh-copy-id user@hostaddress
+
+[remote tunnel autoshh]
+autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -f -N -T -R \
+		8686:localhost:22 pi@83.226.216.148 -p 8282
+
+[remove password authentication]
+sudo nano /etc/ssh/sshd_config
+:settings to change=>
+- PermitRootLogin no
+- ChallengeResponseAuthentication no
+- PasswordAuthentication no
+- UsePAM no
+
+
+ssh -f -N -T -L 8050:localhost:8080 pi@83.226.216.148 -p 8282
+autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -f -N -T -L 8050:localhost:8080 pi@83.226.216.148 -p 8282
+
+ssh CIT_DIGITALISERING@172.25.113.143
+pass: CIT_internal_storage
+
+
+http://www.hypexr.org/linux_scp_help.php
+https://haydenjames.io/linux-securely-copy-files-using-scp/
+https://www.binarytides.com/linux-scp-command/

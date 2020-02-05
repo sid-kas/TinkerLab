@@ -1,0 +1,63 @@
+#############------- Shell commands and ssh ip configs --------##############
+
+network={
+        ssid="DigiNet"
+        psk="cit_digi"
+        key_mgmt=WPA-PSK
+}
+network={
+        ssid="CIT_Guest"
+        psk="Guest41288"
+        key_mgmt=WPA-PSK
+}
+
+
+sudo jupyter notebook --ip 0.0.0.0 --allow-root --NotebookApp.token='' 
+		      --NotebookApp.password='' --port 8989 --no-browser
+
+sudo jupyter notebook --ip 0.0.0.0 --allow-root --port 8888 --no-browser
+
+[add user]
+sudo addduser {username}
+for GROUP in adm dialout cdrom sudo audio video plugdev games users netdev input spi i2c gpio; 
+do sudo adduser {username} $GROUP; done
+
+[systemd service]
+sudo systemctl start/stop/enable
+ls /etc/systemd/system/
+
+nmap -sP 192.168.1.0/24 or -sS
+
+pc mac id: A4-4C-C8-6D-21-53
+rpi macid: b8:27:eb:cf:a0:53
+cit workbench mac id: 10:bf:48:7e:85:4b
+
+
+sudo apt-get purge --auto-remove {any package}
+sudo arp-scan -l --interface=wlan0/eth0
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+sudo nano /etc/rc.local
+
+sudo apt --fix-broken install
+
+ls -l filename /* Size of the file*/
+ls -l *        /* Size of All the files in the current directory */
+ls -al *       /* Size of All the files including hidden files in the current directory */
+ls -al dir/    /* Size of All the files including hidden files in the 'dir' directory */
+du -sh directory_name    /* Gives you the summarized(-s) size of the directory in human readable(-h) format*/
+du -bsh *  /* Gives you the apparent(-b) summarized(-s) size of all the files and directories*/
+df -h /* Gives drive info*/
+
+/*  Internet Speed test */
+curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+
+/var/spool/cron/crontabs
+
+tensorboard --logdir="./mdn"
+
+watch -d -n 0.5 nvidia-smi, watch -d -n 0.5 gpustat
+glances, htop
+history, who,
+
+
+
