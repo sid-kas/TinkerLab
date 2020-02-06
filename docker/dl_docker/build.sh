@@ -1,0 +1,1 @@
+docker build -t seabirds_group12 .
