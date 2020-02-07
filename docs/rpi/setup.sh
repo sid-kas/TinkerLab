@@ -12,10 +12,13 @@ CWD="$PWD"
 install_default_packages() {
     apt-get update && apt-get install -qy \
         sudo \
+        htop \
+        openssh-server \
         git \
         ca-certificates \
         curl \
         screen \
+        tmux \
         software-properties-common \
         python-pip\
         python3-dev \

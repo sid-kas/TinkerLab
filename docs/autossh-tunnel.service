@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=pi
 Environment="AUTOSSH_GATETIME=0"
-ExecStart=/usr/bin/autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -NR 9687:localhost:22 pi@83.226.216.148 -p 8282
+ExecStart=/usr/bin/autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -NR 8686:localhost:22 pi@c-552f524e.022-60-6762675.bbcust.telenor.se -p 8282
 Restart=on-failure
 
 [Install]
