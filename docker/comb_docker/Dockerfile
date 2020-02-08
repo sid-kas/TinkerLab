@@ -66,10 +66,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     apt-transport-https \
     tmux 
 
-RUN sudo curl -sSL https://get.docker.com | sh \
-    && sudo apt-get install -y docker-compose \
-    && sudo apt-get -qy update \
-    && sudo apt-get -qy upgrade
+# RUN sudo curl -sSL https://get.docker.com | sh \
+#     && sudo apt-get install -y docker-compose \
+#     && sudo apt-get -qy update \
+#     && sudo apt-get -qy upgrade
 
 
 FROM codercom/code-server:latest 
