@@ -10,6 +10,6 @@ services:
     environment: 
       PASSWORD: sidkas
     volumes:
-      - /:/home/coder:rw
+      - /home/cit:/home/coder:rw
       # - /c/Users/Siddhartha/Desktop:/home/coder/project:rw
       - /var/run/docker.sock:/var/run/docker.sock
