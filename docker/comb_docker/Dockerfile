@@ -1,4 +1,4 @@
-FROM ufoym/deepo:all-jupyter-py36-cu100 AS builder
+FROM ufoym/deepo:all-jupyter-cpu AS builder
 
 RUN apt-get update && apt-get install -y \
         sudo \
