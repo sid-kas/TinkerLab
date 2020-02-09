@@ -1,4 +1,6 @@
-FROM ufoym/deepo:all-jupyter-cpu AS builder
+FROM ufoym/deepo:latest AS dl-stage
+
+ENV SHELL=/bin/bash
 
 RUN apt-get update && apt-get install -y \
         sudo \
@@ -8,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 # install dependencies
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt-get update && apt-get install -y \
+    sudo \
+    git \
     build-essential \
     apt-utils \
     ca-certificates \
@@ -20,7 +24,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     wget \
     nano \
     vim \
-    git \
     python-numpy \
     python-dev \
     python-opengl \
@@ -63,17 +66,41 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libglew-dev \
     parallel \
     htop \
-    apt-transport-https \
-    tmux 
+    apt-transport-https 
+
+RUN pip3 install --upgrade pip
+
+RUN pip3 --no-cache-dir install \
+    plotly \
+    ipykernel \
+    jupyterlab 
+
+
+ENV TERM xterm-256color
+
+FROM codercom/code-server:latest AS vscode-stage
+
+# install the necessary software
+RUN sudo apt-get update \
+    && sudo apt-get install -qy \
+    build-essential \
+    apt-utils \
+    ca-certificates \
+    curl \
+    software-properties-common \
+    python3-dev \
+    python3-pip \
+    cmake \
+    screen \
+    tmux \
+    swig \
+    wget \
+    unzip 
 
 # RUN sudo curl -sSL https://get.docker.com | sh \
 #     && sudo apt-get install -y docker-compose \
 #     && sudo apt-get -qy update \
 #     && sudo apt-get -qy upgrade
-
-
-FROM codercom/code-server:latest 
-
 
 # TensorBoard
 EXPOSE 6006
