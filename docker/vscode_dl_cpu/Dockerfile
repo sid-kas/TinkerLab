@@ -78,11 +78,11 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         python3.6-dev \
         python3-distutils-extra \
         && \
-    wget -O ~/get-pip.py \
+    sudo wget -O ~/get-pip.py \
         https://bootstrap.pypa.io/get-pip.py && \
-    python3.6 ~/get-pip.py && \
-    ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
-    ln -s /usr/bin/python3.6 /usr/local/bin/python && \
+    sudo python3.6 ~/get-pip.py && \
+    sudo ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
+    sudo ln -s /usr/bin/python3.6 /usr/local/bin/python && \
     sudo python -m pip --no-cache-dir install --upgrade \
         setuptools \
         && \
