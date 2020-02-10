@@ -11,10 +11,6 @@ RUN APT_INSTALL="sudo apt-get install -y --no-install-recommends" && \
 
 ## Tools
 RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
-        libssl-dev \
-        unrar \
-        sudo \
-        git \
         build-essential \
         apt-utils \
         ca-certificates \
@@ -65,6 +61,8 @@ RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
         parallel \
         htop \
         apt-transport-https \
+        libssl-dev \
+        unrar \
         && \
     $GIT_CLONE https://github.com/Kitware/CMake ~/cmake && \
     cd ~/cmake && \
