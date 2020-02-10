@@ -1,7 +1,7 @@
 FROM codercom/code-server:latest
 
-ENV SHELL=/bin/bash
-ENV LANG C.UTF-8
+# ENV SHELL=/bin/bash
+# ENV LANG C.UTF-8
 
 RUN apt-get update && apt-get install -y \
         sudo \
