@@ -62,7 +62,7 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         apt-transport-https \
         libssl-dev \
         unrar 
-RUN echo "$who"
+
 # RUN sudo git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
 #     cd ~/cmake && \
 #     ./bootstrap && \
@@ -133,7 +133,7 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         libsnappy-dev \
         protobuf-compiler \
         && \
-    sudo git clone --depth 10 --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
+    git clone --depth 10 --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
     mkdir -p ~/opencv/build && cd ~/opencv/build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D CMAKE_INSTALL_PREFIX=/usr/local \
