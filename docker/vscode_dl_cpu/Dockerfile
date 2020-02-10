@@ -71,8 +71,8 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
 RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     software-properties-common \
     && \
-    add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get update && \
+    sudo add-apt-repository ppa:deadsnakes/ppa && \
+    sudo apt-get update && \
     sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3.6 \
         python3.6-dev \
