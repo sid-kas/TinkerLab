@@ -60,9 +60,9 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         htop \
         apt-transport-https \
         libssl-dev \
-        unrar \
-        && \
-    sudo git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
+        unrar 
+
+RUN sudo git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
     cd ~/cmake && \
     ./bootstrap && \
     make -j"$(nproc)" install
