@@ -62,10 +62,10 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         libssl-dev \
         unrar 
 
-RUN sudo git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
-    cd ~/cmake && \
-    ./bootstrap && \
-    make -j"$(nproc)" install
+# RUN sudo git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
+#     cd ~/cmake && \
+#     ./bootstrap && \
+#     make -j"$(nproc)" install
 
 ## Python 
 RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
