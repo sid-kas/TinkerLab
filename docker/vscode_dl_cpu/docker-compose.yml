@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  vscode_server_cpu:
+    build: 
+      context: .
+    restart: unless-stopped
+    container_name: deeplearning_vscode_cpu
+    environment: 
+      PASSWORD: cit_digi
+    ports: 
+        - 8443:8080
+        - 8888:8888
+        - 6767:6767
+        - 6006:6006
+    volumes:
+      - ${SHARED_WORKSPACE}:/home/coder:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: jupyter lab --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --NotebookApp.password= --notebook-dir='/home'
+
+    

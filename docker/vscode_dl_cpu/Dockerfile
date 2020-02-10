@@ -1,0 +1,178 @@
+FROM codercom/code-server:latest
+
+ENV SHELL=/bin/bash
+ENV LANG C.UTF-8
+
+RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
+    PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
+    GIT_CLONE="git clone --depth 10" && \
+    rm -rf /var/lib/apt/lists/* \
+           /etc/apt/sources.list.d/cuda.list \
+           /etc/apt/sources.list.d/nvidia-ml.list && \
+    apt-get update 
+
+## Tools
+RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+        libssl-dev \
+        unrar \
+        sudo \
+        git \
+        build-essential \
+        apt-utils \
+        ca-certificates \
+        curl \
+        swig \
+        wget \
+        nano \
+        vim \
+        cmake \
+        zlib1g-dev \
+        libjpeg-dev \
+        xvfb \
+        xorg-dev \
+        libboost-all-dev \
+        libsdl2-dev \
+        libgtk2.0-dev \
+        unzip \
+        aptitude \
+        pkg-config \
+        qtbase5-dev \
+        libqt5opengl5-dev \
+        libassimp-dev \
+        libpython3.5-dev \
+        libboost-python-dev \
+        libtinyxml-dev \
+        screen \
+        terminator \
+        tmux \
+        libcanberra-gtk-module \
+        libfuse2 \
+        libnss3 \
+        fuse \
+        libglfw3-dev \
+        libgl1-mesa-dev \
+        libgl1-mesa-glx \
+        libglew-dev \
+        libosmesa6-dev \
+        net-tools \
+        xpra \
+        xserver-xorg-dev \
+        libffi-dev \
+        libxslt1.1 \
+        libglew-dev \
+        libatlas-base-dev \
+        protobuf-compiler \
+        libprotoc-dev \
+        graphviz \
+        parallel \
+        htop \
+        apt-transport-https \
+        && \
+    $GIT_CLONE https://github.com/Kitware/CMake ~/cmake && \
+    cd ~/cmake && \
+    ./bootstrap && \
+    make -j"$(nproc)" install
+
+## Python 
+RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+    software-properties-common \
+    && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+        python3.6 \
+        python3.6-dev \
+        python3-distutils-extra \
+        && \
+    wget -O ~/get-pip.py \
+        https://bootstrap.pypa.io/get-pip.py && \
+    python3.6 ~/get-pip.py && \
+    ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
+    ln -s /usr/bin/python3.6 /usr/local/bin/python && \
+    $PIP_INSTALL \
+        setuptools \
+        && \
+    $PIP_INSTALL \
+        numpy \
+        pyzmq \
+        scipy \
+        pandas \
+        cloudpickle \
+        scikit-image>=0.14.2 \
+        scikit-learn \
+        matplotlib \
+        Cython \
+        tqdm \
+        plotly \
+        jupyter \
+        ipykernel \
+        jupyterlab \
+        tensorflow \
+        h5py \
+        keras 
+
+# pytorch
+RUN $PIP_INSTALL \
+        future \
+        numpy \
+        protobuf \
+        enum34 \
+        pyyaml \
+        typing \
+        && \
+    $PIP_INSTALL \
+        --pre torch torchvision -f \
+        https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html 
+
+
+# opencv
+
+RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+        libatlas-base-dev \
+        libgflags-dev \
+        libgoogle-glog-dev \
+        libhdf5-serial-dev \
+        libleveldb-dev \
+        liblmdb-dev \
+        libprotobuf-dev \
+        libsnappy-dev \
+        protobuf-compiler \
+        && \
+    $GIT_CLONE --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
+    mkdir -p ~/opencv/build && cd ~/opencv/build && \
+    cmake -D CMAKE_BUILD_TYPE=RELEASE \
+          -D CMAKE_INSTALL_PREFIX=/usr/local \
+          -D WITH_IPP=OFF \
+          -D WITH_CUDA=OFF \
+          -D WITH_OPENCL=OFF \
+          -D BUILD_TESTS=OFF \
+          -D BUILD_PERF_TESTS=OFF \
+          -D BUILD_DOCS=OFF \
+          -D BUILD_EXAMPLES=OFF \
+          .. && \
+    make -j"$(nproc)" install && \
+    ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 
+
+# Install docker and docker-compose
+RUN sudo curl -sSL https://get.docker.com | sh \
+    && sudo apt-get install -y docker-compose \
+    && sudo apt-get -qy update
+
+# config & cleanup
+RUN ldconfig && \
+    apt-get clean && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+
+# TensorBoard
+EXPOSE 6006
+
+# TCP port
+EXPOSE 6767
+
+# Jupyter
+EXPOSE 8888
+
+# vscode
+EXPOSE 8443
+
