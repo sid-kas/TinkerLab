@@ -6,10 +6,7 @@ ENV LANG C.UTF-8
 RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
     GIT_CLONE="git clone --depth 10" && \
-    rm -rf /var/lib/apt/lists/* \
-           /etc/apt/sources.list.d/cuda.list \
-           /etc/apt/sources.list.d/nvidia-ml.list && \
-    apt-get update 
+    apt-get update -y
 
 ## Tools
 RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
