@@ -62,18 +62,18 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         libssl-dev \
         unrar \
         && \
-    $GIT_CLONE https://github.com/Kitware/CMake ~/cmake && \
+    sudo git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
     cd ~/cmake && \
     ./bootstrap && \
     make -j"$(nproc)" install
 
 ## Python 
-RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     software-properties-common \
     && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3.6 \
         python3.6-dev \
         python3-distutils-extra \
@@ -83,10 +83,10 @@ RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
     python3.6 ~/get-pip.py && \
     ln -s /usr/bin/python3.6 /usr/local/bin/python3 && \
     ln -s /usr/bin/python3.6 /usr/local/bin/python && \
-    $PIP_INSTALL \
+    sudo python -m pip --no-cache-dir install --upgrade \
         setuptools \
         && \
-    $PIP_INSTALL \
+    sudo python -m pip --no-cache-dir install --upgrade \
         numpy \
         pyzmq \
         scipy \
@@ -106,7 +106,7 @@ RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
         keras 
 
 # pytorch
-RUN $PIP_INSTALL \
+RUN sudo python -m pip --no-cache-dir install --upgrade \
         future \
         numpy \
         protobuf \
@@ -114,14 +114,14 @@ RUN $PIP_INSTALL \
         pyyaml \
         typing \
         && \
-    $PIP_INSTALL \
+    sudo python -m pip --no-cache-dir install --upgrade \
         --pre torch torchvision -f \
         https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html 
 
 
 # opencv
 
-RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         libatlas-base-dev \
         libgflags-dev \
         libgoogle-glog-dev \
@@ -132,7 +132,7 @@ RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
         libsnappy-dev \
         protobuf-compiler \
         && \
-    $GIT_CLONE --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
+    sudo git clone --depth 10 --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
     mkdir -p ~/opencv/build && cd ~/opencv/build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D CMAKE_INSTALL_PREFIX=/usr/local \
