@@ -152,8 +152,7 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
 # config & cleanup
 RUN ldconfig && \
     sudo apt-get clean && \
-    sudo apt-get autoremove && \
-    sudo rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+    sudo apt-get autoremove 
 
 # TensorBoard
 EXPOSE 6006
