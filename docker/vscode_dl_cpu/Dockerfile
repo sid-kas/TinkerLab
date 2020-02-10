@@ -150,8 +150,7 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
     
 
 # config & cleanup
-RUN ldconfig && \
-    sudo apt-get clean && \
+RUN sudo apt-get clean && \
     sudo apt-get autoremove 
 
 # TensorBoard
