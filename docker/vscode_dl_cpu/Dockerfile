@@ -147,17 +147,13 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
 #           .. && \
 #     make -j"$(nproc)" install && \
 #     ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 
-
-# Install docker and docker-compose
-RUN curl -sSL https://get.docker.com | sh \
-    && sudo apt-get install -y docker-compose \
     
 
 # config & cleanup
 RUN ldconfig && \
-    apt-get clean && \
-    apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/* /tmp/* ~/*
+    sudo apt-get clean && \
+    sudo apt-get autoremove && \
+    sudo rm -rf /var/lib/apt/lists/* /tmp/* ~/*
 
 # TensorBoard
 EXPOSE 6006
