@@ -61,7 +61,7 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         apt-transport-https \
         libssl-dev \
         unrar 
-RUN who
+RUN echo who
 # RUN sudo git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
 #     cd ~/cmake && \
 #     ./bootstrap && \
