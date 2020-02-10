@@ -16,5 +16,6 @@ services:
     volumes:
       - ${SHARED_WORKSPACE}:/home/coder:rw
       - /var/run/docker.sock:/var/run/docker.sock
+    command: [ "jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token=", "--NotebookApp.password=", "--notebook-dir='/home'"]
 
     
