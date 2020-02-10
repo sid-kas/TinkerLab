@@ -1,19 +1,13 @@
 FROM codercom/code-server:latest
 
-# ENV SHELL=/bin/bash
-# ENV LANG C.UTF-8
+ENV SHELL=/bin/bash
+ENV LANG C.UTF-8
 
-RUN apt-get update && apt-get install -y \
-        sudo \
-        git \
-        && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
     
-RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
-    PIP_INSTALL="python -m pip --no-cache-dir install --upgrade" && \
-    GIT_CLONE="git clone --depth 10" && \
-    apt-get update -y
+RUN APT_INSTALL="sudo apt-get install -y --no-install-recommends" && \
+    PIP_INSTALL="sudo python -m pip --no-cache-dir install --upgrade" && \
+    GIT_CLONE="sudo git clone --depth 10" && \
+    sudo apt-get update -y
 
 ## Tools
 RUN DEBIAN_FRONTEND=noninteractive $APT_INSTALL \
