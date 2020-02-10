@@ -148,10 +148,11 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
 #     make -j"$(nproc)" install && \
 #     ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 
 
+RUN apt-get update -y 
 # Install docker and docker-compose
-RUN sudo curl -sSL https://get.docker.com | sh \
-    && sudo apt-get install -y docker-compose \
-    && sudo apt-get -qy update
+RUN curl -sSL https://get.docker.com | sh \
+    && apt-get install -y docker-compose \
+    && apt-get -qy update
 
 # config & cleanup
 RUN ldconfig && \
