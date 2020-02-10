@@ -33,8 +33,6 @@ RUN sudo apt-get install -y --no-install-recommends \
         qtbase5-dev \
         libqt5opengl5-dev \
         libassimp-dev \
-        libpython3.5-dev \
-        libboost-python-dev \
         libtinyxml-dev \
         screen \
         terminator \
