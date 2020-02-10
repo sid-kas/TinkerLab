@@ -3,11 +3,12 @@ FROM codercom/code-server:latest
 ENV SHELL=/bin/bash
 ENV LANG C.UTF-8
 
+USER coder
     
 RUN APT_INSTALL="sudo apt-get install -y --no-install-recommends" && \
     PIP_INSTALL="sudo python -m pip --no-cache-dir install --upgrade" && \
     GIT_CLONE="sudo git clone --depth 10" && \
-    sudo apt-get update -y && sudo adduser ${USER} sudo
+    sudo apt-get update -y 
 
 ## Tools
 RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  \
