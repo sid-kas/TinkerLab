@@ -165,3 +165,4 @@ EXPOSE 8888
 # vscode
 EXPOSE 8443
 
+CMD jupyter lab --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --NotebookApp.password= --notebook-dir='/home'
