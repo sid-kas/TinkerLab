@@ -5,7 +5,7 @@ services:
     build: 
       context: .
     restart: unless-stopped
-    container_name: deeplearning_vscode_cpu
+    container_name: sidkas/deeplearning_vscode_cpu
     environment: 
       PASSWORD: cit_digi
     ports: 
