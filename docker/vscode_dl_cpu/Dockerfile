@@ -131,9 +131,9 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         liblmdb-dev \
         libprotobuf-dev \
         libsnappy-dev \
-        protobuf-compiler \
-        && \
-    git clone --depth 10 --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
+        protobuf-compiler 
+
+RUN  git clone --depth 10 --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
     mkdir -p ~/opencv/build && cd ~/opencv/build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D CMAKE_INSTALL_PREFIX=/usr/local \
