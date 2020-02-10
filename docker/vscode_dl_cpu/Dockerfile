@@ -133,20 +133,20 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommen
         libsnappy-dev \
         protobuf-compiler 
 
-RUN  git clone --depth 10 --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
-    mkdir -p ~/opencv/build && cd ~/opencv/build && \
-    cmake -D CMAKE_BUILD_TYPE=RELEASE \
-          -D CMAKE_INSTALL_PREFIX=/usr/local \
-          -D WITH_IPP=OFF \
-          -D WITH_CUDA=OFF \
-          -D WITH_OPENCL=OFF \
-          -D BUILD_TESTS=OFF \
-          -D BUILD_PERF_TESTS=OFF \
-          -D BUILD_DOCS=OFF \
-          -D BUILD_EXAMPLES=OFF \
-          .. && \
-    make -j"$(nproc)" install && \
-    ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 
+# RUN  git clone --depth 10 --branch 4.1.2 https://github.com/opencv/opencv ~/opencv && \
+#     mkdir -p ~/opencv/build && cd ~/opencv/build && \
+#     cmake -D CMAKE_BUILD_TYPE=RELEASE \
+#           -D CMAKE_INSTALL_PREFIX=/usr/local \
+#           -D WITH_IPP=OFF \
+#           -D WITH_CUDA=OFF \
+#           -D WITH_OPENCL=OFF \
+#           -D BUILD_TESTS=OFF \
+#           -D BUILD_PERF_TESTS=OFF \
+#           -D BUILD_DOCS=OFF \
+#           -D BUILD_EXAMPLES=OFF \
+#           .. && \
+#     make -j"$(nproc)" install && \
+#     ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 
 
 # Install docker and docker-compose
 RUN sudo curl -sSL https://get.docker.com | sh \
