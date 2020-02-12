@@ -59,5 +59,23 @@ watch -d -n 0.5 nvidia-smi, watch -d -n 0.5 gpustat
 glances, htop
 history, who,
 
+useradd -c "Siddhartha Kasaraneni" -s /bin/bash -m -d /mnt/InternalStorage/sidkas -g digi sidkas
+usermod -aG sudo sidkas
+passwd sidkas
 
+useradd -c "Victor Nilsson" -s /bin/bash -m -d /mnt/InternalStorage/victor -g digi victor
+usermod -aG sudo victor
+passwd victor
 
+useradd -c "Joakim Wigström" -s /bin/bash -m -d /mnt/InternalStorage/joakim -g digi joakim
+usermod -aG sudo joakim
+passwd joakim
+
+usermod -c "Siddhartha Kasaraneni" -d -m /mnt/InternalStorage/sidkas -l sidkas -aG digi cit
+
+ps -U {UserName} -- allprocesses for this user
+ b
+fdisk
+du -s "dir"
+tail /etc/passwd
+tail /etc/group

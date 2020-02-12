@@ -2,8 +2,7 @@ version: '3.7'
 
 services:
   vscode_server_cpu:
-    build: 
-      context: .
+    image: sidkas/deeplearning_vscode_cpu:latest
     restart: unless-stopped
     container_name: deeplearning_vscode_cpu
     environment: 
