@@ -1,1 +1,1 @@
-docker build -t seabirds_group12 .
+docker build -t sidkas/dl_gpu .

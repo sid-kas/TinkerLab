@@ -1,0 +1,18 @@
+version: '3.7'
+
+#Note: run two different containers with same shared memory deepo and vscode
+
+services:
+  deeplearning_server:
+    build: 
+      context: .
+    restart: always
+    container_name: remote_deeplearning_server
+    ports: 
+      - 8888:8888
+      - 6767:6767
+      - 6006:6006
+    volumes:
+      - ${SHARED_WORKSPACE}:/home/:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: jupyter lab --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token= --NotebookApp.password= --notebook-dir='/home'

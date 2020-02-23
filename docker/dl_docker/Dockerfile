@@ -1,5 +1,7 @@
 FROM ufoym/deepo:all-jupyter-py36-cu100 AS builder
 
+ENV SHELL=/bin/bash
+
 RUN apt-get update && apt-get install -y \
         sudo \
         git \
