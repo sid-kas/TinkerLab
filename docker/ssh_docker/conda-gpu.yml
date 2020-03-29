@@ -1,0 +1,13 @@
+name: gpu
+
+dependencies:
+  - python==3.7
+  - pip
+  - matplotlib
+  - opencv
+  - cudnn
+  - cudatoolkit
+  - pip:
+    - tensorflow-gpu
+    - lxml
+    - tqdm

@@ -1,0 +1,11 @@
+name: cpu
+
+dependencies:
+  - python==3.7
+  - pip
+  - matplotlib
+  - opencv
+  - pip:
+    - tensorflow
+    - lxml
+    - tqdm

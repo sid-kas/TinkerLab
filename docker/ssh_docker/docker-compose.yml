@@ -1,0 +1,11 @@
+version: '3.7'
+
+services: 
+    shh_docker:
+        build: .
+        container_name: test_rig
+        ports: 
+            - "5222:22"
+        volumes: 
+            - /Users/sidkas/workspace/:/home/:rw
+        restart: unless-stopped
