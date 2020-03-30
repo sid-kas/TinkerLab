@@ -3,9 +3,11 @@ version: '3.7'
 services: 
     shh_docker:
         build: .
+        environment:
+            - SSH_PASSWORD=cit_digi
         container_name: test_rig
         ports: 
             - "5222:22"
         volumes: 
-            - /Users/sidkas/workspace/:/home/:rw
+            - ${HOME}:/root/:rw
         restart: unless-stopped

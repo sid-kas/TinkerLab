@@ -1,12 +1,9 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y openssh-server
-RUN mkdir /var/run/sshd
-RUN echo 'root:cit_digi' | chpasswd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+ENV USER=$USER HOME=$HOME
 
-# SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN echo "The working directory is: $HOME"
+RUN echo "The user is: $USER"
 
 ENV SHELL=/bin/bash
 
@@ -72,19 +69,30 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     rm ~/miniconda.sh && \
     export PATH=~/miniconda/bin:$PATH 
 
-COPY ./create_conda_env.sh ./create_conda_env.sh
 COPY ./conda*.yml ./
-RUN chmod +x ./create_conda_env.sh
 
+RUN /bin/bash -c "source /root/.bashrc && \
+                  export PATH=~/miniconda/bin:$PATH && \
+                  conda init && \
+                  source /root/.bashrc && \
+                  conda env create -f conda-cpu.yml && \
+                  conda env create -f conda-gpu.yml"
 
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,video,utility
 
-# RUN /bin/bash -c "source /root/.bashrc && export PATH=~/miniconda/bin:$PATH && conda init"
-# RUN /bin/bash -c "source /root/.bashrc"
+RUN apt-get update && apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN echo 'root:cit_digi' | chpasswd
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
+
 EXPOSE 22
-CMD ["./create_conda_env.sh"]
-# CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-D"]
