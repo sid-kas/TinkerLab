@@ -46,3 +46,8 @@ pass: CIT_internal_storage
 http://www.hypexr.org/linux_scp_help.php
 https://haydenjames.io/linux-securely-copy-files-using-scp/
 https://www.binarytides.com/linux-scp-command/
+
+
+ssh mendel@localhost -p 4646
+ssh pi@localhost -p 7676
+ssh sidkas@localhost -p 8686

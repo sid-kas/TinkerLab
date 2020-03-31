@@ -5,7 +5,11 @@ dependencies:
   - pip
   - matplotlib
   - opencv
+  - pandas
   - pip:
     - tensorflow
+    - keras
     - lxml
     - tqdm
+    - Augmentor
+    - pillow

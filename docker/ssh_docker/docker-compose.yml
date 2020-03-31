@@ -1,13 +1,11 @@
 version: '3.7'
 
 services: 
-    shh_docker:
+    shh_docker_python37:
         build: .
-        environment:
-            - SSH_PASSWORD=cit_digi
         container_name: test_rig
         ports: 
-            - "5222:22"
+            - "5252:22"
         volumes: 
-            - ${HOME}:/root/:rw
+            - ${HOME}:/home/:rw
         restart: unless-stopped
