@@ -1,16 +1,15 @@
 name: gpu
-
 dependencies:
   - python
   - pip
-  - matplotlib
   - opencv
   - cudnn
-  - pandas
+  - anaconda::tensorflow-gpu==2.1
   - cudatoolkit
   - pip:
-    - tensorflow-gpu
     - keras
+    - matplotlib
+    - pandas
     - lxml
     - tqdm
     - Augmentor

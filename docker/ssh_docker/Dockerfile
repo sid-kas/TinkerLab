@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu-py3
+FROM tensorflow/tensorflow:latest-gpu
 
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,video,utility
@@ -82,7 +82,7 @@ RUN mkdir /var/run/sshd
 ARG SSH_PASS
 ENV SSH_PASS ${SSH_PASS}
 
-RUN echo -e "root:$SSH_PASS" | chpasswd
+RUN echo "root:$SSH_PASS" | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
 

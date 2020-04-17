@@ -40,6 +40,9 @@ sudo nano /etc/rc.local
 
 sudo apt --fix-broken install
 
+LC_MESSAGES=C dpkg-divert --list '*nvidia-340*' | sed -nre 's/^diversion of (.*) to .*/\1/p' | xargs -rd'\n' -n1 -- sudo dpkg-divert --remove
+sudo apt --fix-broken install
+
 ls -l filename /* Size of the file*/
 ls -l *        /* Size of All the files in the current directory */
 ls -al *       /* Size of All the files including hidden files in the current directory */

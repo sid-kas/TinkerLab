@@ -6,7 +6,6 @@ source ./conf.sh
 run_build_dockerfile() 
 {
     echo "building...";
-    
     docker build --tag sidkas/simply_ssh:latest \
                  --build-arg SSH_PASS=$ssh_pass .
 }
