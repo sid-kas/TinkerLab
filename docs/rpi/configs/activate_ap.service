@@ -1,11 +1,12 @@
 [Unit]
 Description=Switch to acces point if wlan not available
-After=network.target
+After=network-online.target
 
 [Service]
-User=root
-ExecStart=/bin/bash -c 'if ! $(iwgetid); then echo "Switching to access point mode"; /bin/bash /raspiApWlanScripts/switchToAP.sh; fi'
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/raspiApWlanScripts/network_switch.py
 Restart=on-failure
+RestartSec=1
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=network-online.target
