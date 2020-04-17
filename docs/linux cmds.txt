@@ -71,6 +71,10 @@ useradd -c "Joakim Wigström" -s /bin/bash -m -d /mnt/InternalStorage/joakim -g 
 usermod -aG sudo joakim
 passwd joakim
 
+useradd -c "Moheb N" -s /bin/bash -m -d /mnt/InternalStorage/moheb -g digi moheb
+usermod -aG sudo moheb
+passwd moheb
+
 usermod -c "Siddhartha Kasaraneni" -d -m /mnt/InternalStorage/sidkas -l sidkas -aG digi cit
 
 ps -U {UserName} -- allprocesses for this user
